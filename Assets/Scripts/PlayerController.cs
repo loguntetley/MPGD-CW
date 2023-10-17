@@ -1,5 +1,8 @@
+using checkPointsManager.runtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private float tmp_viweRotationOffset;
     Vector3 slient = new Vector3(.0f, 0.0f, .0f);
 
+    public CheckPoint currentCheckpoint;
 
 
     // Start is called before the first frame update
@@ -28,7 +32,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.K))// kill the player
+        {
+            teleportToCheckpoint(currentCheckpoint);
+            
+        }
     }
 
     public void OnMove(InputValue value)
@@ -61,11 +69,13 @@ public class PlayerController : MonoBehaviour
             Animator ator = this.GetComponent<Animator>();
             ator.SetBool("run bool", false);
         }
-        this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime);
-        PlayerRotateControl();
+        this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime); //movement control
+        PlayerRotateControl(); 
+        
     }
     private void PlayerRotateControl()
     {
+        //camera control
         if (playerTransform == null || eyeViewTransform == null)
         {
             return;
@@ -81,5 +91,25 @@ public class PlayerController : MonoBehaviour
         eyeViewTransform.localRotation = EyeLocalQuaternion;
     }
 
+    
+    public void teleportToCheckpoint(CheckPoint checkpoint = null)
+    {
+        if (checkpoint != null && currentCheckpoint != null)
+        {
+            transform.position = currentCheckpoint.transform.position;
+            transform.rotation = currentCheckpoint.transform.rotation;
+        }
+        else if (checkpoint != null)
+        {
+            transform.position = checkpoint.transform.position;
+            transform.rotation = checkpoint.transform.rotation;
+        }
+        else
+        {
+            throw new System.InvalidOperationException("There is no 'currentCheckpoint' assign in the 'Player_Checkpoint' component on " + gameObject.name);
+        }
+    }
+
+    
 }
 
