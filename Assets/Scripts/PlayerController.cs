@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public float MaxViewAngle = 65f;
     private float tmp_viweRotationOffset;
     Vector3 slient = new Vector3(.0f, 0.0f, .0f);
-
+    public bool readytoJump = true;
     public CheckPoint currentCheckpoint;
 
 
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         float jump_button = value.Get<float>();
 
-        if (jump_button > 0)
+        if (jump_button > 0 && readytoJump == true)
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
@@ -109,7 +109,21 @@ public class PlayerController : MonoBehaviour
             throw new System.InvalidOperationException("There is no 'currentCheckpoint' assign in the 'Player_Checkpoint' component on " + gameObject.name);
         }
     }
+    private void OnTriggerExit(Collider other)
+    { 
+        if(other.CompareTag("JumpCheck"))
+        {
+            Debug.Log("jumpout!!!");
+            readytoJump = false;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("JumpCheck"))
+        {
+            readytoJump = true;
+        }
+    }
 
-    
 }
 
