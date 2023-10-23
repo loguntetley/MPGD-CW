@@ -41,6 +41,7 @@ public class DeathSystem : MonoBehaviour
     private void instantiateDeathPlatform()
     {
         Vector3 deathPos = this.transform.position;
+        deathPos.y -= 1;
         GameObject deathPlatform = Instantiate(playerData.selectedPlatform, deathPos, Quaternion.identity);
         deathPlatform.tag = "DeathPlatform";
     }

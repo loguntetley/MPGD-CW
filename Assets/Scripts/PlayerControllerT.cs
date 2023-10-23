@@ -11,10 +11,11 @@ using Unity.VisualScripting;
 
 public class PlayerControllerT : MonoBehaviour
 {
-    [SerializeField] private float speed, jumpAmount;
+    [SerializeField] private float speed, jumpAmount, velocityCap = 500;
     private Vector2 moveValue;
     private Rigidbody rigidBody;
     private PlayerData playerData;
+
 
     private void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerControllerT : MonoBehaviour
     {
         OnJump();
         OnSwapBody();
-        gameObject.GetComponent<DeathSystem>().OnDeath();
+        gameObject.GetComponent<DeathSystem>().OnDeath(); 
     }
 
     private void OnSwapBody()
@@ -35,7 +36,7 @@ public class PlayerControllerT : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100) && hit.collider.gameObject.CompareTag("Selectable"))
+            if (Physics.Raycast(ray, out hit, 30) && hit.collider.gameObject.CompareTag("Selectable"))
             {
                 Debug.Log(hit.transform.gameObject.name);
                 playerData.selectedPlatform = hit.collider.gameObject;
@@ -60,5 +61,7 @@ public class PlayerControllerT : MonoBehaviour
     {
         Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
         rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
+        if (rigidBody.velocity.sqrMagnitude > velocityCap)
+            rigidBody.velocity *= 0.99f;
     }
 }
