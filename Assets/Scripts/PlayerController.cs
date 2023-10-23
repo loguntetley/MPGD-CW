@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))// kill the player
         {
             teleportToCheckpoint(currentCheckpoint);
-            
+
         }
     }
 
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         Animator ator = this.GetComponent<Animator>();
         ator.SetBool("run bool", true);
         //if (moveValue == Vector2(0.0f,0.0f))
-       
+
     }
 
     public void OnJump(InputValue value)
@@ -70,8 +70,8 @@ public class PlayerController : MonoBehaviour
             ator.SetBool("run bool", false);
         }
         this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime); //movement control
-        PlayerRotateControl(); 
-        
+        PlayerRotateControl();
+
     }
     private void PlayerRotateControl()
     {
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         eyeViewTransform.localRotation = EyeLocalQuaternion;
     }
 
-    
+
     public void teleportToCheckpoint(CheckPoint checkpoint = null)
     {
         if (checkpoint != null && currentCheckpoint != null)
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void OnTriggerExit(Collider other)
-    { 
+    {
         if(other.CompareTag("JumpCheck"))
         {
             Debug.Log("jumpout!!!");
@@ -126,4 +126,3 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-
