@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ecf632ae24c4abc8c47b30732780e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackerSpeed: 1
+  TrackerSpeed: 4
   TrackerTimer: 3

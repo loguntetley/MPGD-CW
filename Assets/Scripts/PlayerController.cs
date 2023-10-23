@@ -23,23 +23,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Basic operations for players
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        transform.position += new Vector3(moveHorizontal * speed * Time.deltaTime, 0, moveVertical * speed * Time.deltaTime);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
-    void OnMove(InputValue value)
-    {
-    }
-    void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        transform.position += new Vector3(moveHorizontal * speed * Time.fixedDeltaTime, 0, moveVertical * speed * Time.fixedDeltaTime);
-    }
-
-    void OnCollisionExit(Collision col)
+    private void OnCollisionExit(Collision col)
     {
         //Trackers are only spawned when the player leaves the trap, otherwise the player will die too quickly
         //Use Tag to obtain, there will be multiple Trackers in the scene
@@ -49,21 +43,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision col)
     {
         //Only destroys player when colliding with Trakcer
         if (col.gameObject.tag == "Tracker")
         {
-            RebornPlayer();
-            Destroy(gameObject);
+            Dead();
         }
         if (col.gameObject.tag == "SpineTrap")
         {
-            RebornPlayer();
-            Destroy(gameObject);
+            Dead();
         }
     }
-    void OnDestroy()
+
+    public void Dead()
+    {
+        RebornPlayer();
+        Destroy(gameObject);
+    }
+
+
+    private void OnDestroy()
     {
         Instantiate(Explosion, transform.position, transform.rotation);
         //After the player dies, clear all remaining Trackers
@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void RebornPlayer()
+    private void RebornPlayer()
     {
         Instantiate(PrefabsPlayer, new Vector3(0,0.25f,-4), Quaternion.Euler(0, 0, 0));
     }

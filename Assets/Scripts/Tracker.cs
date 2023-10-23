@@ -18,10 +18,10 @@ public class Tracker : MonoBehaviour
     void Update()
     {
         //Tracker tracks players
-        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.fixedDeltaTime);
+        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision col)
     {
         //Make sure it is destroyed only if it touches the player
         if (col.gameObject.name == "Player")
@@ -29,19 +29,8 @@ public class Tracker : MonoBehaviour
             DestroyTracker();
         }
     }
-    void DestroyTracker()
+    private void DestroyTracker()
     {
         Destroy(gameObject);
     }
-
-    void OnDestroy()
-    {
-        //After the player dies, clear all remaining Trackers
-        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Tracker");
-        foreach (GameObject obj in objectsToDestroy)
-        {
-            Destroy(obj);
-        }
-    }
-
 }
