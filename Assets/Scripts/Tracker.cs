@@ -21,11 +21,12 @@ public class Tracker : MonoBehaviour
         transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.fixedDeltaTime);
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider other)
     {
         //Make sure it is destroyed only if it touches the player
-        if (col.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<DeathSystem>().OnDeath(true);
             DestroyTracker();
         }
     }

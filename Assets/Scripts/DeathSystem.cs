@@ -25,6 +25,12 @@ public class DeathSystem : MonoBehaviour
             ResetPlatformData();
         }
     }
+
+    public void OnDeath(bool wasKilled)
+    {
+        DestroyAllDeathPlatforms();
+        ResetPlatformData();
+    }
     private void CreateDeathPlatform()
     {
         if (Input.GetKeyDown(KeyCode.X))
@@ -49,11 +55,13 @@ public class DeathSystem : MonoBehaviour
     private void increasePlatformData()
     {
         playerData.platformsUsed++;
+        playerData.selectedPlatform = null;
         this.gameObject.transform.position = currentCheckpoint.transform.position;
     }
     private void ResetPlatformData()
     {
         playerData.platformsUsed = 0;
+        playerData.selectedPlatform = null;
         this.gameObject.transform.position = currentCheckpoint.transform.position;
     }
 

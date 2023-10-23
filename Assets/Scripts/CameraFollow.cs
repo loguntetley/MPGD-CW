@@ -8,7 +8,6 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] public GameObject player;
     private Vector3 offset;
-    [SerializeField] float speed = 5.0f;
     [SerializeField] private float mouseSensitivity = 3.0f;
     private float rotationY;
     private float rotationX;

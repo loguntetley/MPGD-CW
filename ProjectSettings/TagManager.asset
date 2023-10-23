@@ -11,6 +11,7 @@ TagManager:
   - DeathPlatform
   - Checkpoint
   - PermanentDeathPlatform
+  - Tracker
   layers:
   - Default
   - TransparentFX

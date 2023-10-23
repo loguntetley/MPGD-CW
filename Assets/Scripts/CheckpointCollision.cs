@@ -16,6 +16,7 @@ public class CheckpointCollision : MonoBehaviour
                 playersCheckpointData.state = CheckpointData.flagStates.Captured;
                 other.GetComponent<DeathSystem>().currentCheckpoint = this.gameObject;
                 other.GetComponent<PlayerData>().platformsUsed = 0;
+                other.GetComponent<PlayerData>().selectedPlatform = null;
                 GetComponent<CheckpointData>().state = CheckpointData.flagStates.Current;
                 PermanentDeathPlatforms();
                 isTriggered = true;
