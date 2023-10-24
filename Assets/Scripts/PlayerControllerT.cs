@@ -68,7 +68,7 @@ public class PlayerControllerT : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform")
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform" || other.gameObject.tag == "PermanentDeathPlatform")
         {
             isGrounded = true;
         }
