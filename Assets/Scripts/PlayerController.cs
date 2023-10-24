@@ -8,9 +8,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    /*movement system*/
     public Vector2 moveValue;
     public float speed;
-
+    /*Camera_system*/
     public float rotateSpeed = 400;
     [Range(1, 2)] public float rotateRatio = 1;
     public Transform playerTransform;
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour
     private bool Camera_is_firstperson = true; 
     public float MaxViewAngle = 65f;
     private float tmp_viweRotationOffset = 0 ;
+    /*Use to switch the animator*/
     Vector3 slient = new Vector3(.0f, 0.0f, .0f);
+    /*jump scan*/
     public static bool readytoJump = true;
     public CheckPoint currentCheckpoint;
     
@@ -36,7 +39,13 @@ public class PlayerController : MonoBehaviour
     {
         KeyInputScan();   
     }
+    void FixedUpdate()
+    {
+        movement_control();
+        PlayerRotateControl();
 
+    }
+    /*input system*/
     public void OnMove(InputValue value)
     {
 
@@ -46,32 +55,30 @@ public class PlayerController : MonoBehaviour
         //if (moveValue == Vector2(0.0f,0.0f))
        
     }
-
+    
     public void OnJump()
     {
-        
-
         if (  readytoJump == true)
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
     }
 
-
-    void FixedUpdate()
+    public void movement_control()
     {
+        //use rigidbody to move the player
         Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
         movement = transform.TransformDirection(movement);
-        if(movement == slient)
+        if (movement == slient)
         {
             Animator ator = this.GetComponent<Animator>();
             ator.SetBool("run bool", false);
         }
-        this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime); //movement control
-        First_person_PlayerRotateControl(); 
-        
+        this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime); 
     }
-    private void First_person_PlayerRotateControl()
+
+   
+    private void PlayerRotateControl()
     {
         //camera control
         if (playerTransform == null || eyeViewTransform == null)
