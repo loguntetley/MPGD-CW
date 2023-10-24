@@ -4,8 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 
-namespace checkPointsManager.runtime
-{
+
     public class CheckPoint : MonoBehaviour
     {
         public GameObject Player;
@@ -25,4 +24,4 @@ namespace checkPointsManager.runtime
     }
 
     
-}
+

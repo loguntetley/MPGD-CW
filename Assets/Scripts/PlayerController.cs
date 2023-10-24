@@ -11,16 +11,18 @@ public class PlayerController : MonoBehaviour
     public Vector2 moveValue;
     public float speed;
 
-    public float rotateSpeed = 300;
+    public float rotateSpeed = 400;
     [Range(1, 2)] public float rotateRatio = 1;
     public Transform playerTransform;
     public Transform eyeViewTransform;
+    public GameObject[] Cameras;
+    private bool Camera_is_firstperson = true; 
     public float MaxViewAngle = 65f;
-    private float tmp_viweRotationOffset;
+    private float tmp_viweRotationOffset = 0 ;
     Vector3 slient = new Vector3(.0f, 0.0f, .0f);
-    public bool readytoJump = true;
+    public static bool readytoJump = true;
     public CheckPoint currentCheckpoint;
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +34,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))// kill the player
-        {
-            teleportToCheckpoint(currentCheckpoint);
-            
-        }
+        KeyInputScan();   
     }
 
     public void OnMove(InputValue value)
@@ -49,11 +47,11 @@ public class PlayerController : MonoBehaviour
        
     }
 
-    public void OnJump(InputValue value)
+    public void OnJump()
     {
-        float jump_button = value.Get<float>();
+        
 
-        if (jump_button > 0 && readytoJump == true)
+        if (  readytoJump == true)
         {
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
@@ -70,10 +68,10 @@ public class PlayerController : MonoBehaviour
             ator.SetBool("run bool", false);
         }
         this.GetComponent<Rigidbody>().AddForce(movement * speed * Time.fixedDeltaTime); //movement control
-        PlayerRotateControl(); 
+        First_person_PlayerRotateControl(); 
         
     }
-    private void PlayerRotateControl()
+    private void First_person_PlayerRotateControl()
     {
         //camera control
         if (playerTransform == null || eyeViewTransform == null)
@@ -83,8 +81,11 @@ public class PlayerController : MonoBehaviour
         float offset_x = Input.GetAxis("Mouse X");
         float offset_y = Input.GetAxis("Mouse Y");
         playerTransform.Rotate(Vector3.up * (offset_x * rotateSpeed * rotateRatio * Time.fixedDeltaTime));
-        tmp_viweRotationOffset -= offset_y * rotateSpeed * rotateRatio * Time.fixedDeltaTime;
-        tmp_viweRotationOffset = Mathf.Clamp(tmp_viweRotationOffset, -MaxViewAngle, MaxViewAngle);
+        if(Camera_is_firstperson)
+        {
+            tmp_viweRotationOffset -= offset_y * rotateSpeed * rotateRatio * Time.fixedDeltaTime;
+            tmp_viweRotationOffset = Mathf.Clamp(tmp_viweRotationOffset, -MaxViewAngle, MaxViewAngle);
+        }
         Quaternion EyeLocalQuaternion = Quaternion.Euler(new Vector3(tmp_viweRotationOffset,
             eyeViewTransform.localEulerAngles.y,
             eyeViewTransform.localEulerAngles.z));
@@ -109,21 +110,39 @@ public class PlayerController : MonoBehaviour
             throw new System.InvalidOperationException("There is no 'currentCheckpoint' assign in the 'Player_Checkpoint' component on " + gameObject.name);
         }
     }
-    private void OnTriggerExit(Collider other)
-    { 
-        if(other.CompareTag("JumpCheck"))
-        {
-            Debug.Log("jumpout!!!");
-            readytoJump = false;
-        }
-    }
-    private void OnTriggerEnter(Collider other)
+
+    public void KeyInputScan()
     {
-        if (other.CompareTag("JumpCheck"))
+        if (Input.GetKeyDown(KeyCode.K))// kill the player
         {
-            readytoJump = true;
+            teleportToCheckpoint(currentCheckpoint);
+
+        }
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Camera_switch();
         }
     }
+
+    public void Camera_switch()
+    {
+        if(Camera_is_firstperson)
+        {
+            eyeViewTransform = Cameras[1].transform;
+            Cameras[0].SetActive(false);
+            Cameras[1].SetActive(true);
+            Camera_is_firstperson = false;
+        }
+        else
+        {
+            eyeViewTransform = Cameras[0].transform;
+            Cameras[0].SetActive(true);
+            Cameras[1].SetActive(false);
+            Camera_is_firstperson = true;
+
+        }
+    }
+
 
 }
 
