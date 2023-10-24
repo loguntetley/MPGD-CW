@@ -31,6 +31,7 @@ public class DeathSystem : MonoBehaviour
         DestroyAllDeathPlatforms();
         ResetPlatformData();
     }
+
     private void CreateDeathPlatform()
     {
         if (Input.GetKeyDown(KeyCode.X))

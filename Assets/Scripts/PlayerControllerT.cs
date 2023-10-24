@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEditor;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UIElements;
@@ -15,6 +14,7 @@ public class PlayerControllerT : MonoBehaviour
     private Vector2 moveValue;
     private Rigidbody rigidBody;
     private PlayerData playerData;
+    private bool isGrounded = true;
 
 
     private void Start()
@@ -46,9 +46,10 @@ public class PlayerControllerT : MonoBehaviour
     
     private void OnJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rigidBody.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
+            isGrounded = false;
         }
     }
 
@@ -63,5 +64,13 @@ public class PlayerControllerT : MonoBehaviour
         rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
         if (rigidBody.velocity.sqrMagnitude > velocityCap)
             rigidBody.velocity *= 0.99f;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform")
+        {
+            isGrounded = true;
+        }
     }
 }
