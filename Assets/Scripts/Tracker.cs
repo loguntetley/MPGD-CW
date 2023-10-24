@@ -7,6 +7,7 @@ public class Tracker : MonoBehaviour
     public float TrackerSpeed;
     public float TrackerTimer;
     GameObject Player;
+    public GameObject Explosion;
     // Start is called before the first frame update
     void Start()
     {

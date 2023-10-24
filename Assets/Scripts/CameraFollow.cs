@@ -27,8 +27,11 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
-        CameraRotator();
+        if (player.GetComponent<MeshRenderer>().enabled)
+        {
+            transform.position = player.transform.position + offset;
+            CameraRotator();
+        }
     }
 
     private void CameraRotator()

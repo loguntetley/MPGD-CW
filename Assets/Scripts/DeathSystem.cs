@@ -56,13 +56,28 @@ public class DeathSystem : MonoBehaviour
     {
         playerData.platformsUsed++;
         playerData.selectedPlatform = null;
-        this.gameObject.transform.position = currentCheckpoint.transform.position;
+        ResetPlayerDelay();
     }
     private void ResetPlatformData()
     {
         playerData.platformsUsed = 0;
         playerData.selectedPlatform = null;
+        ResetPlayerDelay();
+    }
+
+    private void ResetPlayerDelay()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Invoke("ActivateMeshRender", 2);
+    }
+
+    private void ActivateMeshRender()
+    {
         this.gameObject.transform.position = currentCheckpoint.transform.position;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void DestroyAllDeathPlatforms()
