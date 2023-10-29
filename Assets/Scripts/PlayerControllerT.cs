@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 
 public class PlayerControllerT : MonoBehaviour
 {
-    [SerializeField] private float speed, jumpAmount, velocityCap = 500;
+    [SerializeField] private float speed,global_speed, jumpAmount, velocityCap = 500;
     private Vector2 moveValue;
     private Rigidbody rigidBody;
     private PlayerData playerData;
@@ -61,6 +61,8 @@ public class PlayerControllerT : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
+        movement = transform.TransformDirection(movement);
+        Player_movement_improvement();
         rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
         if (rigidBody.velocity.sqrMagnitude > velocityCap)
             rigidBody.velocity *= 0.99f;
@@ -71,6 +73,18 @@ public class PlayerControllerT : MonoBehaviour
         if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform" || other.gameObject.tag == "PermanentDeathPlatform")
         {
             isGrounded = true;
+        }
+    }
+    private void Player_movement_improvement()
+    {
+        Vector3 current_Velocity = rigidBody.velocity;
+        if(current_Velocity.x - moveValue.x > current_Velocity.x|| current_Velocity.y - moveValue.y > current_Velocity.y)
+        {
+            speed = global_speed;
+        }
+        else
+        {
+            speed = global_speed / 1.5f;
         }
     }
 }

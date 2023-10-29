@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1003,6 +1003,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7265015393881874549, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265015393881874549, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 7617798500861976427, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
       propertyPath: currentCheckpoint
       value: 
@@ -1010,6 +1018,10 @@ PrefabInstance:
     - target: {fileID: 8301035563419290761, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
       propertyPath: m_Name
       value: TutorialPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301035563419290761, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8777117236494968784, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
       propertyPath: jumpAmount
@@ -2043,6 +2055,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1729414682}
+    - target: {fileID: 4860680789543304427, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
+      propertyPath: rotationXMinMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7227688204361391590, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
       propertyPath: m_Name
       value: Main Camera

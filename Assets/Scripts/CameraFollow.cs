@@ -15,7 +15,8 @@ public class CameraFollow : MonoBehaviour
     private Vector3 currentRotation;
     private Vector3 smoothVelocity = Vector3.zero;
     [SerializeField] private float smoothTime = 0.2f;
-    [SerializeField] private Vector2 rotationXMinMax = new Vector2(-40, 40);
+    [SerializeField] private Vector2 rotationXMinMax = new Vector2(0, 40);
+    private Vector3 camera_current_Rotate;
 
     // Start is called before the first frame update
     void Start()
@@ -36,19 +37,23 @@ public class CameraFollow : MonoBehaviour
 
     private void CameraRotator()
     {
-        if (Input.GetMouseButton(1)) 
+        if (Input.GetMouseButton(1))
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
+            float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
             rotationY += mouseX;
             rotationX += mouseY;
 
             rotationX = Mathf.Clamp(rotationX, rotationXMinMax.x, rotationXMinMax.y);
+            Vector3 player_nextRotation = new Vector3(0f, rotationY);
+
             Vector3 nextRotation = new Vector3(rotationX, rotationY);
+
             currentRotation = Vector3.SmoothDamp(currentRotation, nextRotation, ref smoothVelocity, smoothTime);
             transform.localEulerAngles = currentRotation;
+            player.transform.localEulerAngles = player_nextRotation;
             transform.position = player.transform.position - transform.forward * distance;
+            offset = transform.position - player.transform.position;
         }
 
     }
