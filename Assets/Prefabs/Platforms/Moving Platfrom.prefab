@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3696840008529257406}
   - component: {fileID: 5599643144923541522}
   - component: {fileID: 8578596253776535003}
+  - component: {fileID: -3245568767461086495}
   m_Layer: 0
   m_Name: Moving Platfrom
   m_TagString: Selectable
@@ -148,3 +149,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-3245568767461086495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511695865430517685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformName: Moving Platform
+  platfromImage: {fileID: 2800000, guid: 4a5f313ff199baa459f6c42bb741a8cf, type: 3}

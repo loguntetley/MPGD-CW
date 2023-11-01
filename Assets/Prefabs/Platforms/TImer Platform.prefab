@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2913270657657425504}
   - component: {fileID: 8908427979575922303}
   - component: {fileID: 3842019259046268589}
+  - component: {fileID: -4062558528384742557}
   m_Layer: 0
   m_Name: TImer Platform
   m_TagString: Selectable
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0dde0ec5eaa3ef49af78cc4a2bbdc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4062558528384742557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833053381001618766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformName: Timer Platform
+  platfromImage: {fileID: 2800000, guid: 466940544a7c396429c14ac097a06da2, type: 3}

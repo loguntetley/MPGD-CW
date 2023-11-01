@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1349432789006336596}
   - component: {fileID: 7146386650733172584}
   - component: {fileID: 8312854796008792889}
+  - component: {fileID: -8671184304447129182}
   m_Layer: 0
   m_Name: Spring Platform
   m_TagString: Selectable
@@ -120,3 +121,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpforce: 10
   player: {fileID: 0}
+--- !u!114 &-8671184304447129182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5721853075144126781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformName: Spring Platform
+  platfromImage: {fileID: 2800000, guid: d844456cded6a364aa60f08c1221a841, type: 3}
