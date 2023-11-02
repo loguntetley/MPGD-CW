@@ -45,7 +45,7 @@ public class Proxity : MonoBehaviour
             if (hit.CompareTag("Player"))
             {
                 //Call the function in the PlayerController script to destroy the player
-                GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerController>().Dead(); ;
+                GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<DeathSystem>().OnDeath(true);
             }
         }
     }
