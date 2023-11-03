@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ecf632ae24c4abc8c47b30732780e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackerSpeed: 2
-  TrackerTimer: 5
+  TrackerSpeed: 1
+  TrackerTimer: 3
   Explosion: {fileID: 736722307714426609, guid: ef900e958c7e4440bae53beb0527ba31, type: 3}

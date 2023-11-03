@@ -71,6 +71,7 @@ public class DeathSystem : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
         Invoke("ActivateMeshRender", 2);
     }
 
@@ -79,6 +80,7 @@ public class DeathSystem : MonoBehaviour
         this.gameObject.transform.position = currentCheckpoint.transform.position;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Rigidbody>().useGravity = true;
+        gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 
     private void DestroyAllDeathPlatforms()
