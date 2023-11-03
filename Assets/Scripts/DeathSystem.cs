@@ -6,24 +6,10 @@ public class DeathSystem : MonoBehaviour
 {
     public GameObject currentCheckpoint;
     private PlayerData playerData;
-
+    
     private void Start()
     {
         playerData = GetComponent<PlayerData>();
-    }
-
-    public void OnDeath()
-    {
-        if (playerData.platformsUsed < currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
-        {
-            CreateDeathPlatform();
-        }
-
-        if (playerData.platformsUsed == currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
-        {
-            DestroyAllDeathPlatforms();
-            ResetPlatformData();
-        }
     }
 
     public void OnDeath(bool wasKilled)
@@ -32,9 +18,9 @@ public class DeathSystem : MonoBehaviour
         ResetPlatformData();
     }
 
-    private void CreateDeathPlatform()
+    void OnKillplayer()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (playerData.platformsUsed < currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
         {
             Debug.Log("Player inisiated death");
             if (playerData.selectedPlatform != null)
@@ -42,8 +28,14 @@ public class DeathSystem : MonoBehaviour
                 instantiateDeathPlatform();
                 increasePlatformData();
             }
+            if (playerData.platformsUsed == currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
+            {
+                DestroyAllDeathPlatforms();
+                ResetPlatformData();
+            }
         }
     }
+
 
     private void instantiateDeathPlatform()
     {
@@ -71,6 +63,7 @@ public class DeathSystem : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
         Invoke("ActivateMeshRender", 2);
     }
 
@@ -79,6 +72,7 @@ public class DeathSystem : MonoBehaviour
         this.gameObject.transform.position = currentCheckpoint.transform.position;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Rigidbody>().useGravity = true;
+        gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 
     private void DestroyAllDeathPlatforms()

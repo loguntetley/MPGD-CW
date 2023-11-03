@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 
 public class PlayerControllerT : MonoBehaviour
 {
-    [SerializeField] private float speed,global_speed, jumpAmount, velocityCap = 500;
+    [SerializeField] private float speed,global_speed, jumpAmount, velocityCap = 100;
     private Vector2 moveValue;
     private Rigidbody rigidBody;
     private PlayerData playerData;
@@ -24,29 +24,24 @@ public class PlayerControllerT : MonoBehaviour
     }
     void Update()
     {
-        OnJump();
-        OnSwapBody();
-        gameObject.GetComponent<DeathSystem>().OnDeath(); 
+
     }
 
-    private void OnSwapBody()
+    void OnPlatformselection()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 30) && hit.collider.gameObject.CompareTag("Selectable"))
-            {
-                Debug.Log(hit.transform.gameObject.name);
-                playerData.selectedPlatform = hit.collider.gameObject;
-            }
+        if (Physics.Raycast(ray, out hit, 30) && hit.collider.gameObject.CompareTag("Selectable"))
+        {
+            Debug.Log(hit.transform.gameObject.name);
+            playerData.selectedPlatform = hit.collider.gameObject;
         }
     }
     
     private void OnJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if ( isGrounded)
         {
             rigidBody.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
             isGrounded = false;

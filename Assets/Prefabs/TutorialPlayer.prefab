@@ -262,7 +262,7 @@ MonoBehaviour:
   speed: 500
   global_speed: 1000
   jumpAmount: 5
-  velocityCap: 300
+  velocityCap: 100
 --- !u!114 &7617798500861976427
 MonoBehaviour:
   m_ObjectHideFlags: 0

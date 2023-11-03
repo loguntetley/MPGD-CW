@@ -1027,6 +1027,10 @@ PrefabInstance:
       propertyPath: jumpAmount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8777117236494968784, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
+      propertyPath: velocityCap
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
