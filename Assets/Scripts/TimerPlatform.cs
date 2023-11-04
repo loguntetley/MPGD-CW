@@ -14,7 +14,16 @@ public class TimerPlatform : MonoBehaviour
 
     private IEnumerator Destroying()
     {
+        Invoke("destroy", delay);
+        Invoke("recreate", delay+3f);
         yield return new WaitForSeconds(delay);
-        Destroy(gameObject);//put animation here if it's made in the future
+    }
+    void destroy()
+    {
+        gameObject.SetActive(false);
+    }
+    void recreate()
+    {
+        gameObject.SetActive(true);
     }
 }

@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour
     {
         offset = transform.position;
         distance = Vector3.Distance(player.transform.position, this.transform.position);
+        CameraRotator(true);
     }
 
     // Update is called once per frame
@@ -31,13 +32,13 @@ public class CameraFollow : MonoBehaviour
         if (player.GetComponent<MeshRenderer>().enabled)
         {
             transform.position = player.transform.position + offset;
-            CameraRotator();
+            CameraRotator(false);
         }
     }
 
-    private void CameraRotator()
+    private void CameraRotator(bool start)
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1)||start)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
             float mouseY = -Input.GetAxis("Mouse Y") * mouseSensitivity;
