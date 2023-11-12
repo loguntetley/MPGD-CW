@@ -27,6 +27,10 @@ public class ButtonEvent : MonoBehaviour
     {
         levelselection.SetActive(true);
     }
+    public void On_setting_button()
+    {
+        settingmenu.SetActive(true);
+    }
     public void On_selection_button(int j)
     {
         /*currentButton = EventSystem.current.currentSelectedGameObject;
@@ -45,6 +49,10 @@ public class ButtonEvent : MonoBehaviour
     public void On_levelExit_button()
     {
         levelselection.SetActive(false);
+    }
+    public void On_settingExit_button()
+    {
+        settingmenu.SetActive(false);
     }
     public void OnExitGame()//定义一个退出游戏的方法
     {
