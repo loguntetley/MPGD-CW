@@ -9,6 +9,7 @@ using TMPro;
 public class ButtonEvent : MonoBehaviour
 {
     public GameObject levelselection;
+    public GameObject settingmenu;
     private GameObject currentButton;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class ButtonEvent : MonoBehaviour
     {
         
     }
+    /*————————————————button————————————————*/
     public void On_start_button()
     {
         levelselection.SetActive(true);
@@ -39,8 +41,17 @@ public class ButtonEvent : MonoBehaviour
         {
             Debug.Log("No such level select");
         }
-
-            
-
+    }
+    public void On_levelExit_button()
+    {
+        levelselection.SetActive(false);
+    }
+    public void OnExitGame()//定义一个退出游戏的方法
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;//如果是在unity编译器中
+#else
+        Application.Quit();//否则在打包文件中
+#endif
     }
 }
