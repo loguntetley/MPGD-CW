@@ -1792,7 +1792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777117236494968784, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
       propertyPath: jumpAmount
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8777117236494968784, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
       propertyPath: velocityCap
@@ -3461,6 +3461,12 @@ PrefabInstance:
     - target: {fileID: 7010068153144417636, guid: 4a4f886e94c955f45a9d95e04448a661, type: 3}
       propertyPath: m_Name
       value: Platform Data UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219100008886622623, guid: 4a4f886e94c955f45a9d95e04448a661, type: 3}
+      propertyPath: m_text
+      value: 'Platform name
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
