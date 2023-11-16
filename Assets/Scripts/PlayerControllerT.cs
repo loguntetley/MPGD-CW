@@ -15,6 +15,8 @@ public class PlayerControllerT : MonoBehaviour
     private Rigidbody rigidBody;
     private PlayerData playerData;
     private bool isGrounded = true;
+    public float fullspeed = 4;
+    private bool high = false;
 
 
     private void Start()
@@ -24,7 +26,7 @@ public class PlayerControllerT : MonoBehaviour
     }
     void Update()
     {
-
+        jumpimprove();
     }
 
     void OnPlatformselection()
@@ -80,6 +82,22 @@ public class PlayerControllerT : MonoBehaviour
         else
         {
             speed = global_speed / 1.5f;
+        }
+    }
+    private void jumpimprove()
+    {
+        if (rigidBody.velocity.y > 3f)
+        {
+            high = true;
+        }
+        if (rigidBody.velocity.y < 2.5f&&high)
+        {
+            Physics.gravity = new Vector3(0, -9.8f * fullspeed, 0);
+            high = false;
+        }
+        if (isGrounded)
+        {
+            Physics.gravity = new Vector3(0, -12f , 0);
         }
     }
 }
