@@ -23,7 +23,7 @@ public class DropFloor : MonoBehaviour
         if (other.CompareTag("Player") && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
-            Invoke("DropTile", 0.15f); // 延迟1秒后掉落
+            Invoke("DropTile", 0.2f); // 延迟0.2秒后掉落
         }
     }
 
