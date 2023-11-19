@@ -12,6 +12,9 @@ public class ButtonEvent : MonoBehaviour
     public GameObject settingmenu;
     private GameObject currentButton;
     public GameObject changing_state_UI;
+    public GameObject StartMenu;
+    public GameObject PauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +29,14 @@ public class ButtonEvent : MonoBehaviour
     /*___________________________button_______________________________*/
     public void On_start_button()
     {
+        StartMenu.SetActive(false);
         levelselection.SetActive(true); 
         GetComponent<AudioSource>().Play();
 
     }
     public void On_setting_button()
     {
+        StartMenu.SetActive(false);
         settingmenu.SetActive(true);
         GetComponent<AudioSource>().Play();
     }
@@ -54,12 +59,14 @@ public class ButtonEvent : MonoBehaviour
     public void On_levelExit_button()
     {
         levelselection.SetActive(false);
+        StartMenu.SetActive(true);
         GetComponent<AudioSource>().Play();
 
     }
     public void On_settingExit_button()
     {
         settingmenu.SetActive(false);
+        StartMenu.SetActive(true);
         GetComponent<AudioSource>().Play();
     }
     public void OnExitGame()
@@ -87,6 +94,27 @@ public class ButtonEvent : MonoBehaviour
                 
             }
         }
+    }
+    public void On_pause_button()
+    {
+        PauseMenu.SetActive(true);
+        Time.timeScale = 0;
+
+    }
+    public void On_Resume_button()
+    {
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void On_Restart_button(int i)
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(i);
+    }
+    public void On_Menu_button()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
 }
