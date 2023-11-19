@@ -108,4 +108,4 @@ MonoBehaviour:
   player: {fileID: 0}
   mouseSensitivity: 3
   smoothTime: 0.2
-  rotationXMinMax: {x: -40, y: 40}
+  rotationXMinMax: {x: 0, y: 40}

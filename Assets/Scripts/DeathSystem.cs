@@ -6,26 +6,10 @@ public class DeathSystem : MonoBehaviour
 {
     public GameObject currentCheckpoint;
     private PlayerData playerData;
-
+    
     private void Start()
     {
         playerData = GetComponent<PlayerData>();
-    }
-
-    public void OnDeath()
-    {
-        //Debug.Log("PlNum: "+playerData.platformsUsed);
-        //Debug.Log("PlLimit"+currentCheckpoint.GetComponent<CheckpointData>().platformLimit);
-        if (playerData.platformsUsed < currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
-        {
-            CreateDeathPlatform();
-        }
-
-        if (playerData.platformsUsed == currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
-        {
-            DestroyAllDeathPlatforms();
-            ResetPlatformData();
-        }
     }
 
     public void OnDeath(bool wasKilled)
@@ -34,9 +18,9 @@ public class DeathSystem : MonoBehaviour
         ResetPlatformData();
     }
 
-    private void CreateDeathPlatform()
+    void OnKillplayer()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (playerData.platformsUsed < currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
         {
             Debug.Log("Player inisiated death");
             if (playerData.selectedPlatform != null)
@@ -44,8 +28,14 @@ public class DeathSystem : MonoBehaviour
                 instantiateDeathPlatform();
                 increasePlatformData();
             }
+            if (playerData.platformsUsed == currentCheckpoint.GetComponent<CheckpointData>().platformLimit)
+            {
+                DestroyAllDeathPlatforms();
+                ResetPlatformData();
+            }
         }
     }
+
 
     private void instantiateDeathPlatform()
     {
@@ -73,6 +63,7 @@ public class DeathSystem : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Rigidbody>().useGravity = false;
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<SphereCollider>().enabled = false;
         Invoke("ActivateMeshRender", 2);
     }
 
@@ -81,13 +72,7 @@ public class DeathSystem : MonoBehaviour
         this.gameObject.transform.position = currentCheckpoint.transform.position;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Rigidbody>().useGravity = true;
-
-        //bug fix(proximity bomb (die twice)): Since the player object is not destroyed when the player dies, the TrakcerTrap will continue to spawn trackers when the player dies within the range of the TrackerTrap. When the player's position is reset (fake resurrection), the Trakcer from the previous round will continue to track the player. Therefore all Trakcers need to be destroyed after the player respawns. And the rigid body range of TrakcerTrap has been slightly reduced, so that its rigid body range should not coincide with the checkpoint platform.
-        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Tracker");
-        foreach (GameObject obj in objectsToDestroy)
-        {
-            Destroy(obj);
-        }
+        gameObject.GetComponent<SphereCollider>().enabled = true;
     }
 
     private void DestroyAllDeathPlatforms()

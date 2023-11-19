@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
-    guid: 3979dede33da83d45ae42f603edf5220
+    guid: f1ec889838ca8034b8380062c62551c1
   - enabled: 1
-    path: Assets/Scenes/MainMap.unity
-    guid: b0e72fe2626e74047b94b65be366b819
+    path: Assets/Scenes/Firstelvel.unity
+    guid: 2b30f5e3df69fe7449e87dcf273496a2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 53529a90f899b0f4c8824cdce094759c, type: 2}
   m_UseUCBPForAssetBundles: 0

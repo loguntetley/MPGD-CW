@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7898036666452362935}
   - component: {fileID: 8721778368625792374}
   - component: {fileID: 7582099644423288346}
+  - component: {fileID: 81687083031038660}
   m_Layer: 0
   m_Name: Rotating Platform
   m_TagString: Selectable
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.698, y: 0.5, z: -3.756}
-  m_LocalScale: {x: 14.456, y: 0.3, z: 4}
+  m_LocalScale: {x: 16, y: 0.2, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,3 +119,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &81687083031038660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790129104800456346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformName: Rotating Platform
+  platfromImage: {fileID: 2800000, guid: ef4e5a266b6b5e044a4be31dfdfd61b9, type: 3}
