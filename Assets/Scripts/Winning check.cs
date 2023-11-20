@@ -8,18 +8,21 @@ public class Winningcheck : MonoBehaviour
 {
     // Start is called before the first frame update
     private GameObject[] AllCheckpoints;
-    public TextMeshProUGUI win_text;
+    public GameObject win_text;
 
     // Start is called before the first frame update
     void Start()
     {
         AllCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        CheckWinCondition();
+
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckWinCondition();
+        
     }
 
     private void CheckWinCondition()
@@ -33,9 +36,12 @@ public class Winningcheck : MonoBehaviour
             }
         }
 
-        if (capturedFlags == AllCheckpoints.Length - 1)
+        if (capturedFlags == AllCheckpoints.Length - 2)
         {
-            win_text.gameObject.SetActive(true);
+            int unlock = SceneManager.GetActiveScene().buildIndex;
+            PlayerPrefs.SetInt("currentScore", 3);
+            PlayerPrefs.SetInt("currentLevel", unlock+1);
+            win_text.SetActive(true);
         }
     }
     public void retry_button()
