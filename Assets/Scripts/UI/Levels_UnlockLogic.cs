@@ -13,9 +13,15 @@ public class Levels_UnlockLogic : MonoBehaviour
     private GameObject[] button_objects;
     public Sprite active_star;
     public Sprite active_level;
+    private void Awake()
+    {
+        //PlayerPrefs.SetInt("currentScore", 0);
+        //PlayerPrefs.SetInt("currentLevel", 1);
+    }
     void Start()
     {
         int unlock = PlayerPrefs.GetInt("currentLevel");
+        //Debug.Log(unlock);
         //button_objects = new GameObject[buttonPoint.transform.childCount];
         buttons = new Button[buttonPoint.transform.childCount];
         for (int i = 0; i < buttonPoint.transform.childCount; i++)
@@ -34,27 +40,46 @@ public class Levels_UnlockLogic : MonoBehaviour
         {
             buttons[i].interactable = true;
             buttons[i].GetComponent<Image>().sprite = active_level;
-
+            unlock_level(i);
+            if(unlock - i > 1)
+            {
+                full_star(i);
+            }
         }
         getState(unlock - 1);
+        
 
     }
-    
-    void getState(int num)
+    void unlock_level(int num)
     {
-        //active gameobjects
         GameObject[] objects = new GameObject[4];
         //GameObject[] objects = buttons[num].GetComponentsInChildren<GameObject>(false);
-        objects[0] = buttons[num].transform.Find("Text(TMP)").gameObject;
-        objects[1] = buttons[num].transform.Find("star_1").gameObject;
-        objects[2] = buttons[num].transform.Find("star_2").gameObject;
-        objects[3] = buttons[num].transform.Find("star_3").gameObject;
+        for (int i = 0; i < 4; i++)
+        {
+            objects[i] = buttons[num].transform.GetChild(i).gameObject;
+
+        }
+        //objects[0] = buttons[num].transform.GetChild(0).gameObject;
+        //objects[1] = buttons[num].transform.Find("star_1").gameObject;
+        //objects[2] = buttons[num].transform.Find("star_2").gameObject;
+        //objects[3] = buttons[num].transform.Find("star_3").gameObject;
         foreach (var star in objects)
         {
             star.SetActive(true);
         }
+    }
+    void getState(int num)
+    {
+        if(num < 0)
+        {
+            return;
+        }
+        //active gameobjects
+        
         //active the stars
         int score_of_star = PlayerPrefs.GetInt("currentScore");
+        //Debug.Log(score_of_star);
+
         Image[] stars = buttons[num].GetComponentsInChildren<Image>();
         //int score_of_star = DataController.level_score[0];
         for (int i = 1; score_of_star > 0; score_of_star--,i++)
@@ -62,10 +87,15 @@ public class Levels_UnlockLogic : MonoBehaviour
             stars[i].sprite = active_star;
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    void full_star(int num)
     {
-        
+        Image[] stars = buttons[num].GetComponentsInChildren<Image>();
+        //int score_of_star = DataController.level_score[0];
+        for (int i = 1; i<4;  i++)
+        {
+            stars[i].sprite = active_star;
+        }
     }
+    
+    
 }
