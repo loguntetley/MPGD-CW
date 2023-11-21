@@ -8,11 +8,9 @@ public class Conveyor : MonoBehaviour
     //Defines the speed at which textures move on the conveyor belt.
     float x, y, scrollX = 2f;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -26,6 +24,8 @@ public class Conveyor : MonoBehaviour
     //Transport objects when they are on a conveyor belt
     public void OnCollisionStay(Collision collision)
     {
-        collision.transform.Translate(Vector3.forward*ConveyorSpeed * Time.deltaTime, Space.World);
+        //Vector3 position = new Vector3(Mathf.Cos(theta) * ConveyorSpeed, Mathf.Sin(theta) * ConveyorSpeed, 0);
+        //collision.transform.Translate(Vector3.forward*ConveyorSpeed * Time.deltaTime, Space.World);
+        collision.transform.Translate(transform.forward * ConveyorSpeed * Time.deltaTime, Space.World);
     }
 }
