@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private GameObject[] AllCheckpoints;
     public int scenceBuildValue;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckWinCondition(scenceBuildValue);
+        //CheckWinCondition(scenceBuildValue);
     }
 
     private void CheckWinCondition(int scenceBuildValue)
@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
 
         if (capturedFlags  == AllCheckpoints.Length - 1) 
         {
-            SceneManager.LoadScene(scenceBuildValue);
+
         }
     }
+   
 }
