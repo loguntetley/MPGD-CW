@@ -125,7 +125,6 @@ public class ButtonEvent : MonoBehaviour
     public void On_Restart_button(int i)
     {
         Time.timeScale = 1;
-        Score_check();
         SceneManager.LoadScene(i);
     }
     public void On_Menu_button()

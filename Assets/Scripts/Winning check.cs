@@ -38,14 +38,11 @@ public class Winningcheck : MonoBehaviour
 
         if (capturedFlags == AllCheckpoints.Length - 1)
         {
+            win_text.SetActive(true);
             int unlock = SceneManager.GetActiveScene().buildIndex;
             PlayerPrefs.SetInt("currentScore", 3);
             PlayerPrefs.SetInt("currentLevel", unlock+1);
-            win_text.SetActive(true);
         }
     }
-    public void retry_button()
-    {
-        SceneManager.LoadScene(0);
-    }
+    
 }
