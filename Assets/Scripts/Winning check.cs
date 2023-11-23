@@ -36,7 +36,7 @@ public class Winningcheck : MonoBehaviour
             }
         }
 
-        if (capturedFlags == AllCheckpoints.Length - 2)
+        if (capturedFlags == AllCheckpoints.Length - 1)
         {
             int unlock = SceneManager.GetActiveScene().buildIndex;
             PlayerPrefs.SetInt("currentScore", 3);
