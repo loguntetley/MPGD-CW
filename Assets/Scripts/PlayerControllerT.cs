@@ -63,6 +63,9 @@ public class PlayerControllerT : MonoBehaviour
         rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
         if (rigidBody.velocity.sqrMagnitude > velocityCap)
             rigidBody.velocity *= 0.99f;
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
+        //transform.position += new Vector3(moveHorizontal * speed * Time.deltaTime, 0, moveVertical * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
