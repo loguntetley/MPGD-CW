@@ -57,15 +57,25 @@ public class PlayerControllerT : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
-        movement = transform.TransformDirection(movement);
-        Player_movement_improvement();
-        rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
-        if (rigidBody.velocity.sqrMagnitude > velocityCap)
-            rigidBody.velocity *= 0.99f;
-        //float moveHorizontal = Input.GetAxis("Horizontal");
-        //float moveVertical = Input.GetAxis("Vertical");
-        //transform.position += new Vector3(moveHorizontal * speed * Time.deltaTime, 0, moveVertical * speed * Time.deltaTime);
+        //Vector3 movement = new Vector3(moveValue.x, 0.0f, moveValue.y);
+        //movement = transform.TransformDirection(movement);
+        //Player_movement_improvement();
+        //rigidBody.AddForce(movement * speed * Time.fixedDeltaTime);
+        //if (rigidBody.velocity.sqrMagnitude > velocityCap)
+        //    rigidBody.velocity *= 0.99f;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        // 获取摄像机的方向，但忽略垂直方向（y轴）
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward.Normalize();
+        right.Normalize();
+        // 根据摄像机的方向和玩家的输入计算移动方向
+        Vector3 moveDirection = (forward * moveVertical + right * moveHorizontal).normalized;
+        // 更新玩家的位置
+        transform.position += moveDirection * speed * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision other)
