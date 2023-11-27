@@ -80,7 +80,7 @@ public class PlayerControllerT : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform" || other.gameObject.tag == "PermanentDeathPlatform" || other.gameObject.tag == "Selectable")
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform" || other.gameObject.tag == "PermanentDeathPlatform" || other.gameObject.tag == "Selectable" || other.gameObject.tag == "DropFloor")
         {
             isGrounded = true;
         }
