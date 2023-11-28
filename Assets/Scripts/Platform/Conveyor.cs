@@ -6,7 +6,7 @@ public class Conveyor : MonoBehaviour
 {
     public float ConveyorSpeed = 5f;
     //Defines the speed at which textures move on the conveyor belt.
-    float x, y, scrollX = 2f;
+    float x, y, scrollX = 1f;
 
     // Start is called before the first frame update
     void Start()
