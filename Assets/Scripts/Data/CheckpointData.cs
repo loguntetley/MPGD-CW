@@ -7,8 +7,8 @@ public class CheckpointData : MonoBehaviour
 {
     public int checkpointNumber;
     public flagStates state = flagStates.Uncaptured;
-    [SerializeField] private GameObject Flag;
-    [SerializeField] private Material[] flagMaterials;
+    //[SerializeField] private GameObject Flag;
+    //[SerializeField] private Material[] flagMaterials;
     public int platformLimit = 5;
     public enum flagStates
     {
@@ -20,12 +20,30 @@ public class CheckpointData : MonoBehaviour
     private void Update()
     {
         if (state == flagStates.Uncaptured)
-            Flag.GetComponent<Renderer>().material = flagMaterials[0];
+        {
+            //Flag.GetComponent<Renderer>().material = flagMaterials[0];
+            transform.Find("Magic Aura yellow").gameObject.SetActive(true);
+            transform.Find("Magic Aura blue").gameObject.SetActive(false);
+            transform.Find("Magic Aura green").gameObject.SetActive(false);
+        }
+
 
         if (state == flagStates.Current)
-            Flag.GetComponent<Renderer>().material = flagMaterials[1];
+        {
+            //Flag.GetComponent<Renderer>().material = flagMaterials[1];
+            transform.Find("Magic Aura yellow").gameObject.SetActive(false);
+            transform.Find("Magic Aura blue").gameObject.SetActive(true);
+            transform.Find("Magic Aura green").gameObject.SetActive(false);
+        }
+
 
         if (state == flagStates.Captured)
-            Flag.GetComponent<Renderer>().material = flagMaterials[2];
+        {
+            //Flag.GetComponent<Renderer>().material = flagMaterials[2];
+            transform.Find("Magic Aura yellow").gameObject.SetActive(false);
+            transform.Find("Magic Aura blue").gameObject.SetActive(false);
+            transform.Find("Magic Aura green").gameObject.SetActive(true);
+        }
+
     }
 }
