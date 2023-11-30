@@ -7,7 +7,7 @@ public class Tracker : MonoBehaviour
     public float TrackerSpeed;
     public float TrackerTimer;
     GameObject Player;
-    public GameObject Explosion;
+    public GameObject ExplosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class Tracker : MonoBehaviour
     void Update()
     {
         //Tracker tracks players
-        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.fixedDeltaTime);
+        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)
@@ -33,6 +33,7 @@ public class Tracker : MonoBehaviour
     }
     void DestroyTracker()
     {
+        Instantiate(ExplosionEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 

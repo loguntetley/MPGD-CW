@@ -22,6 +22,8 @@ public class CheckpointData : MonoBehaviour
         if (state == flagStates.Uncaptured)
         {
             //Flag.GetComponent<Renderer>().material = flagMaterials[0];
+            //使用不同颜色的魔法光环来表示检查点的状态。
+            //Use different colored magic auras to indicate checkpoint status.
             transform.Find("Magic Aura yellow").gameObject.SetActive(true);
             transform.Find("Magic Aura blue").gameObject.SetActive(false);
             transform.Find("Magic Aura green").gameObject.SetActive(false);
