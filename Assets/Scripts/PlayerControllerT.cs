@@ -10,7 +10,8 @@ using Unity.VisualScripting;
 
 public class PlayerControllerT : MonoBehaviour
 {
-    [SerializeField] private float speed, global_speed, jumpAmount, velocityCap = 100;
+    [SerializeField] private float speed, jumpAmount;
+    //[SerializeField] private float global_speed, velocityCap = 100;
     private Vector2 moveValue;
     private Rigidbody rigidBody;
     private PlayerData playerData;
@@ -75,7 +76,7 @@ public class PlayerControllerT : MonoBehaviour
         // 根据摄像机的方向和玩家的输入计算移动方向
         Vector3 moveDirection = (forward * moveVertical + right * moveHorizontal).normalized;
         // 更新玩家的位置
-        transform.position += moveDirection * speed * Time.deltaTime;
+        rigidBody.MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -85,18 +86,18 @@ public class PlayerControllerT : MonoBehaviour
             isGrounded = true;
         }
     }
-    private void Player_movement_improvement()
-    {
-        Vector3 current_Velocity = rigidBody.velocity;
-        if (current_Velocity.x - moveValue.x > current_Velocity.x || current_Velocity.y - moveValue.y > current_Velocity.y)
-        {
-            speed = global_speed;
-        }
-        else
-        {
-            speed = global_speed / 1.5f;
-        }
-    }
+    //private void Player_movement_improvement()
+    //{
+    //    Vector3 current_Velocity = rigidBody.velocity;
+    //    if (current_Velocity.x - moveValue.x > current_Velocity.x || current_Velocity.y - moveValue.y > current_Velocity.y)
+    //    {
+    //        speed = global_speed;
+    //    }
+    //    else
+    //    {
+    //        speed = global_speed / 1.5f;
+    //    }
+    //}
     private void jumpimprove()
     {
         if (rigidBody.velocity.y > 3f)
