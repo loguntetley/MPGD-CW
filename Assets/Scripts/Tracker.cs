@@ -7,7 +7,6 @@ public class Tracker : MonoBehaviour
     public float TrackerSpeed;
     public float TrackerTimer;
     GameObject Player;
-    public GameObject Explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,31 +18,19 @@ public class Tracker : MonoBehaviour
     void Update()
     {
         //Tracker tracks players
-        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.fixedDeltaTime);
+        transform.Translate((Player.transform.position - transform.position).normalized * TrackerSpeed * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision col)
     {
         //Make sure it is destroyed only if it touches the player
-        if (other.gameObject.tag == "Player")
+        if (col.gameObject.name == "Player")
         {
-            other.gameObject.GetComponent<DeathSystem>().OnDeath(true);
             DestroyTracker();
         }
     }
-    void DestroyTracker()
+    private void DestroyTracker()
     {
         Destroy(gameObject);
     }
-
-    void OnDestroy()
-    {
-        //After the player dies, clear all remaining Trackers
-        GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Tracker");
-        foreach (GameObject obj in objectsToDestroy)
-        {
-            Destroy(obj);
-        }
-    }
-
 }

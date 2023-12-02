@@ -4,15 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - JumpCheck
+  - Tracker
   - TrackerTrap
   - SpineTrap
-  - Selectable
-  - DeathPlatform
-  - Checkpoint
-  - PermanentDeathPlatform
-  - Tracker
-  - Ground
   layers:
   - Default
   - TransparentFX
