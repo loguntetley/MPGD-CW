@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
+    public GameObject ExplosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SpikeTrap : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Instantiate(ExplosionEffect, other.transform.position, other.transform.rotation);
             other.gameObject.GetComponent<DeathSystem>().OnDeath(true);
         }
     }

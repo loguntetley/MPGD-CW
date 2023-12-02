@@ -23,7 +23,7 @@ public class TrackerTrap : MonoBehaviour
     {
         if (other.tag == "Player" && !isTriggered)
         {
-            Instantiate(tracker, this.transform);
+            Instantiate(tracker, new Vector3(this.transform.position.x, this.transform.position.y + 0.8f, this.transform.position.z), Quaternion.identity);
             Invoke("TriggerResest", 3);
             isTriggered = true;
         }
@@ -33,7 +33,7 @@ public class TrackerTrap : MonoBehaviour
     {
         if (other.tag == "Player" && !isTriggered)
         {
-            Instantiate(tracker, this.transform);
+            Instantiate(tracker, new Vector3(this.transform.position.x, this.transform.position.y+ 0.8f, this.transform.position.z), Quaternion.identity);
             Invoke("TriggerResest", 3);
             isTriggered = true;
         }

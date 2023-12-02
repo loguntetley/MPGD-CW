@@ -26,7 +26,8 @@ public class Proxity : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            //GetComponent<Renderer>().material.color = Color.red;
+            transform.Find("CFXR Fire").gameObject.SetActive(true);//打开燃烧效果。Turn on the burning effect.
             Invoke("BoomProxity", ProxityTimer);
         }
     }
@@ -34,6 +35,7 @@ public class Proxity : MonoBehaviour
     private void BoomProxity()
     {
         Instantiate(Explosion, transform.position, transform.rotation);
+        transform.Find("CFXR Fire").gameObject.SetActive(false);
         gameObject.SetActive(false);
         //Delay for one second before resetting Proxity for testing purposes. Not necessarily required in the game.
         Invoke("ResetProxity", 1);
