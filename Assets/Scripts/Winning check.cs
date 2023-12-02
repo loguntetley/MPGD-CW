@@ -40,8 +40,12 @@ public class Winningcheck : MonoBehaviour
         {
             win_text.SetActive(true);
             int unlock = SceneManager.GetActiveScene().buildIndex;
-            PlayerPrefs.SetInt("currentScore", 3);
-            PlayerPrefs.SetInt("currentLevel", unlock+1);
+            int New_level = PlayerPrefs.GetInt("currentLevel");
+            if(unlock == New_level)
+            {
+                PlayerPrefs.SetInt("currentScore", 3);
+                PlayerPrefs.SetInt("currentLevel", unlock + 1);
+            }
         }
     }
     
