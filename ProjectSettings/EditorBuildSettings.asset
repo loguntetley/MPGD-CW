@@ -5,15 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameMenu.unity
     guid: 5ba7a77990813554da1a7fcbb7798bd3
   - enabled: 1
     path: Assets/Scenes/TutorialLevel.unity
     guid: f1ec889838ca8034b8380062c62551c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Firstelvel.unity
     guid: 2b30f5e3df69fe7449e87dcf273496a2
+  - enabled: 0
+    path: Assets/Polytope Studio/Lowpoly_Demos/Environment_Free/Environment_Free.unity
+    guid: c732593fe76e5a84197f9cd13963f706
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 53529a90f899b0f4c8824cdce094759c, type: 2}
   m_UseUCBPForAssetBundles: 0

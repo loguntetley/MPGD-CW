@@ -256,13 +256,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8301035563419290761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e600653a1ea40ed42aafe046b5002ac8, type: 3}
+  m_Script: {fileID: 11500000, guid: 48ea501d4ebdfee4d8496f66f3637fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  speed: 10
   global_speed: 1000
-  jumpAmount: 5
+  jumpAmount: 10
   velocityCap: 100
+  fullspeed: 4
 --- !u!114 &7617798500861976427
 MonoBehaviour:
   m_ObjectHideFlags: 0
