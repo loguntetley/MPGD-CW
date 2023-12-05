@@ -13,6 +13,8 @@ public class Levels_UnlockLogic : MonoBehaviour
     private GameObject[] button_objects;
     public Sprite active_star;
     public Sprite active_level;
+    //public ScriptDontDestroy leveldata;
+
     private void Awake()
     {
         //PlayerPrefs.SetInt("currentScore", 0);
@@ -20,7 +22,7 @@ public class Levels_UnlockLogic : MonoBehaviour
     }
     void Start()
     {
-        int unlock = PlayerPrefs.GetInt("currentLevel");
+        //int unlock = PlayerPrefs.GetInt("currentLevel");
         //Debug.Log(unlock);
         //button_objects = new GameObject[buttonPoint.transform.childCount];
         buttons = new Button[buttonPoint.transform.childCount];
@@ -28,25 +30,27 @@ public class Levels_UnlockLogic : MonoBehaviour
         {
             buttons[i] = buttonPoint.transform.GetChild(i).GetComponent<Button>();
         }
-        //for (int i = 0; i < buttonPoint.transform.childCount; i++)
-        {
-            //button_objects[i] = buttonPoint.transform.GetChild(i).GetComponent<GameObject>();
-        }
         for (int i = 1; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
         }
-        for (int i = 0; i < unlock; i++)
+        for (int i = 0; ScriptDontDestroy._scriptDontDestroy.levels[i] > 0; i++)
         {
             buttons[i].interactable = true;
             buttons[i].GetComponent<Image>().sprite = active_level;
             unlock_level(i);
-            if(unlock - i > 1)
+            if (i + 1 < ScriptDontDestroy._scriptDontDestroy.levels.Length && ScriptDontDestroy._scriptDontDestroy.levels[i]==3 ) //unlock the newest level
             {
-                full_star(i);
+                if(ScriptDontDestroy._scriptDontDestroy.levels[i + 1] == 0)
+                {
+                    buttons[i+1].interactable = true;
+                    buttons[i+1].GetComponent<Image>().sprite = active_level;
+                    unlock_level(i+1);
+                }
             }
+            getState(i);
         }
-        getState(unlock - 1);
+        
         
 
     }
@@ -75,11 +79,11 @@ public class Levels_UnlockLogic : MonoBehaviour
             return;
         }
         //active gameobjects
-        
-        //active the stars
-        int score_of_star = PlayerPrefs.GetInt("currentScore");
-        //Debug.Log(score_of_star);
 
+        //active the stars
+        //int score_of_star = PlayerPrefs.GetInt("currentScore");
+        //Debug.Log(score_of_star);
+        int score_of_star = ScriptDontDestroy._scriptDontDestroy.levels[num];
         Image[] stars = buttons[num].GetComponentsInChildren<Image>();
         //int score_of_star = DataController.level_score[0];
         for (int i = 1; score_of_star > 0; score_of_star--,i++)
