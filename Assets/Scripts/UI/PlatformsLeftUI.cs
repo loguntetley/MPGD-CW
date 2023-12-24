@@ -17,6 +17,6 @@ public class PlatformsLeftUI : MonoBehaviour
     void Update()
     {
         int platformsLeft = player.GetComponent<DeathSystem>().currentCheckpoint.GetComponent<CheckpointData>().platformLimit - player.GetComponent<PlayerData>().platformsUsed;
-        gameObject.GetComponent<TextMeshProUGUI>().text = "Platforms Remaining: " + (platformsLeft - 1);
+        gameObject.GetComponent<TextMeshProUGUI>().text = "Remaining: " + (platformsLeft - 1);
     }
 }

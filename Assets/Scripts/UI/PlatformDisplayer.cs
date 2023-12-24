@@ -49,13 +49,13 @@ public class PlatformDisplayer : MonoBehaviour
         {
             image.enabled = true;
             text.enabled = true;
-            currentlySelectedText.enabled = true;
+            currentlySelectedText.enabled = false;
         }
         if (playerData.selectedPlatform == null)
         {
             image.enabled = false;
             text.enabled = false;
-            currentlySelectedText.enabled = false;
+            currentlySelectedText.enabled = true;
         }
     }
 }

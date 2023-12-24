@@ -131,5 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformName: Timer Platform
+  platformName: 'Timer '
   platfromImage: {fileID: 2800000, guid: 466940544a7c396429c14ac097a06da2, type: 3}

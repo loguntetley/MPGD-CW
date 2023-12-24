@@ -6,6 +6,12 @@ public class push : MonoBehaviour
 {
     public float pushforce = 10f;
     public Rigidbody player;
+    private AudioSource audio;
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+        audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+    }
     public Vector3 GetRandomUnitVector()
     {
         float x = (float)(Random.value-0.5)*2;
@@ -17,6 +23,7 @@ public class push : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag =="Player"){ // .tag or .name
+            audio.Play();
             player = collision.gameObject.GetComponent<Rigidbody>();
             player.AddForce(GetRandomUnitVector()*pushforce, ForceMode.Impulse);
         }
