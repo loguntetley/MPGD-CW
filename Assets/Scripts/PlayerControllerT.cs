@@ -18,12 +18,14 @@ public class PlayerControllerT : MonoBehaviour
     private bool isGrounded = true;
     public float fullspeed = 4;
     private bool high = false;
-
+    private AudioSource drop_audio;
 
     private void Start()
     {
         rigidBody = this.GetComponent<Rigidbody>();
         playerData = GetComponent<PlayerData>();
+        drop_audio = GetComponent<AudioSource>();
+        drop_audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
     }
     void Update()
     {
@@ -83,6 +85,7 @@ public class PlayerControllerT : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground" || other.gameObject.tag == "DeathPlatform" || other.gameObject.tag == "PermanentDeathPlatform" || other.gameObject.tag == "Selectable" || other.gameObject.tag == "DropFloor")
         {
+            drop_audio.Play();
             isGrounded = true;
         }
     }
