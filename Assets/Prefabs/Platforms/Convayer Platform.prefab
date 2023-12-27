@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3684536889f54417a8dcea5802167378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConveyorSpeed: 10
+  ConveyorSpeed: 8
 --- !u!114 &-3300099383837148745
 MonoBehaviour:
   m_ObjectHideFlags: 0

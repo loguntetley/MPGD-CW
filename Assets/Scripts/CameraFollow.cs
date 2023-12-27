@@ -21,8 +21,20 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position;
-        distance = Vector3.Distance(player.transform.position, this.transform.position);
+        //offset = transform.position;
+        //distance = Vector3.Distance(player.transform.position, this.transform.position);
+        //CameraRotator(true);
+        offset = transform.position - player.transform.position;
+        distance = Vector3.Distance(player.transform.position, transform.position);
+
+        // 初始摄像机旋转角度
+        rotationX = 10f; // 向下倾斜10度
+        rotationY = 0f; // 当前Y轴角度
+
+        currentRotation = new Vector3(rotationX, rotationY);
+        transform.eulerAngles = currentRotation;
+        transform.position = player.transform.position - transform.forward * distance;
+
         CameraRotator(true);
     }
 

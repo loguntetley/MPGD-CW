@@ -18,18 +18,30 @@ public class ButtonEvent : MonoBehaviour
     private AudioSource musicAudio;
     public AudioClip buttonClip;
     public AudioSource gameAudio;
-    // Start is called before the first frame update
+    public Slider Music_slider;
+    public Slider game_sound_slider;
+    //public ScriptDontDestroy leveldata;
+
     void Start()
     {
-
-        musicAudio = GetComponent<AudioSource>();
+        music_volume_setting();
     }
-
-    // Update is called once per frame
-    void Update()
+    void music_volume_setting()
     {
-        
+        musicAudio = GetComponent<AudioSource>();
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            musicAudio.volume = ScriptDontDestroy._scriptDontDestroy.Music_Value;
+            gameAudio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        }
+        else
+        {
+            Music_slider.value = ScriptDontDestroy._scriptDontDestroy.Music_Value;
+            game_sound_slider.value = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        }
     }
+    
+
     /*___________________________button_______________________________*/
     public void On_start_button()
     {
@@ -103,10 +115,12 @@ public class ButtonEvent : MonoBehaviour
     {
         //Debug.Log(slider.value);
         musicAudio.volume = slider.value;
+        ScriptDontDestroy._scriptDontDestroy.Music_Value = slider.value;
     }
     public void On_Game_Value_Change(Slider slider)
     {
         gameAudio.volume = slider.value;
+        ScriptDontDestroy._scriptDontDestroy.game_sound_Value = slider.value;
     }
     /// <summary>
     /// game playing button
@@ -114,8 +128,9 @@ public class ButtonEvent : MonoBehaviour
     public void On_pause_button()
     {
         PauseMenu.SetActive(true);
+        Score_check();
         Time.timeScale = 0;
-
+        
     }
     public void On_Resume_button()
     {
@@ -150,7 +165,13 @@ public class ButtonEvent : MonoBehaviour
                 capturedFlags++;
             }
         }
-        int i = capturedFlags / AllCheckpoints.Length * 3;
-        PlayerPrefs.SetInt("currentScore", i);
+        int i = (int)(capturedFlags / AllCheckpoints.Length * 3);
+        int unlock = SceneManager.GetActiveScene().buildIndex;
+        if(i> ScriptDontDestroy._scriptDontDestroy.levels[unlock-1])
+        {
+            ScriptDontDestroy._scriptDontDestroy.levels[unlock - 1] = i;
+
+        }
+        //PlayerPrefs.SetInt("currentScore", i);
     }
 }

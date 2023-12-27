@@ -7,20 +7,23 @@ public class GameManager : MonoBehaviour
 {
     private GameObject[] AllCheckpoints;
     public int scenceBuildValue;
-    
+    //public ScriptDontDestroy leveldata;
+    public GameObject win_text;
+
     // Start is called before the first frame update
     void Start()
     {
         AllCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        CheckWinCondition();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //CheckWinCondition(scenceBuildValue);
+        CheckWinCondition();
     }
 
-    private void CheckWinCondition(int scenceBuildValue)
+    private void CheckWinCondition()
     {
         int capturedFlags = 0;
         foreach (var checkpoint in AllCheckpoints)
@@ -31,9 +34,17 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (capturedFlags  == AllCheckpoints.Length - 1) 
+        if (capturedFlags == AllCheckpoints.Length - 1)
         {
-
+            win_text.SetActive(true);
+            int unlock = SceneManager.GetActiveScene().buildIndex;
+            //int New_level = PlayerPrefs.GetInt("currentLevel");
+            //if (unlock == New_level)
+            //{
+             ScriptDontDestroy._scriptDontDestroy.levels[unlock-1] = 3;
+                //PlayerPrefs.SetInt("currentScore", 3);
+                //PlayerPrefs.SetInt("currentLevel", unlock + 1);
+            //}
         }
     }
    

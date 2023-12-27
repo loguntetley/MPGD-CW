@@ -29,6 +29,7 @@ public class Tracker : MonoBehaviour
         {
             other.gameObject.GetComponent<DeathSystem>().OnDeath(true);
             DestroyTracker();
+            DestroyAllTrackers();
         }
     }
     void DestroyTracker()
@@ -37,7 +38,7 @@ public class Tracker : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnDestroy()
+    void DestroyAllTrackers()
     {
         //After the player dies, clear all remaining Trackers
         GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag("Tracker");
