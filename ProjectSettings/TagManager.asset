@@ -15,6 +15,10 @@ TagManager:
   - Ground
   - DropFloor
   - wall
+  - FxTemporaire
+  - CollectableData
+  - TempleSpawn
+  - Collectable
   layers:
   - Default
   - TransparentFX
