@@ -18,7 +18,7 @@ public class CollectableData : MonoBehaviour
 
     public void Update()
     {
-        reamainingCollectableText.text = (collectableTotal - collectablesCollected).ToString();
+        reamainingCollectableText.text = collectablesCollected.ToString() + "/"+ collectableTotal.ToString();
     }
 
     public void disableAllSection()

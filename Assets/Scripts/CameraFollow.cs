@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
     private float maxSD = 20.0f;
     private float minSD = 1f;
     [Header("Distance between camera and player")]
-    public float freeDistance = 5f;
+    public float freeDistance = 20f;
     private Vector3 m_rayDirection;
     Transform m_transform;
     private Ray m_ray;

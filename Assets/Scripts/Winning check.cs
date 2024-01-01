@@ -9,6 +9,7 @@ public class Winningcheck : MonoBehaviour
     // Start is called before the first frame update
     private GameObject[] AllCheckpoints;
     public GameObject win_text;
+    public GameObject visible_objects;
     public ScriptDontDestroy leveldata;
     // Start is called before the first frame update
     void Start()
@@ -39,13 +40,14 @@ public class Winningcheck : MonoBehaviour
         if (capturedFlags == AllCheckpoints.Length - 1)
         {
             win_text.SetActive(true);
+            visible_objects.SetActive(true);
             int unlock = SceneManager.GetActiveScene().buildIndex;
-            int New_level = PlayerPrefs.GetInt("currentLevel");
-            if(unlock == New_level)
+            //int New_level = PlayerPrefs.GetInt("currentLevel");
+            if (leveldata.levels[unlock] < 3)
             {
-                leveldata.levels[unlock] = 3;
-                PlayerPrefs.SetInt("currentScore", 3);
-                PlayerPrefs.SetInt("currentLevel", unlock + 1);
+                //leveldata.levels[unlock] = 3;
+                //PlayerPrefs.SetInt("currentScore", 3);
+                //PlayerPrefs.SetInt("currentLevel", unlock + 1);
             }
         }
     }

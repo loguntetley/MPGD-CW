@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1911962446026868255}
   - component: {fileID: 4964600276951712734}
   - component: {fileID: 2948168422211970547}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Proxity Trap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,9 +184,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1018664272722485354, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -516098083770646512, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca33953609789e94a9676c02ab10670e, type: 3}
       propertyPath: m_Name
       value: bombModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424396828587804706, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: ca33953609789e94a9676c02ab10670e, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -206,13 +234,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 165960763769574010}
     m_Modifications:
+    - target: {fileID: 3199283261846579216, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4893118513826488101, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4893118513826488103, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6294508012652817957, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294508012652817959, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6294508013172393185, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
       propertyPath: m_LocalScale.x
@@ -273,6 +313,10 @@ PrefabInstance:
     - target: {fileID: 6294508013172393196, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
       propertyPath: m_Name
       value: CFXR Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 6294508013172393196, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6294508013172393196, guid: 043176b6a68be2b43b073aaaa4782c7d, type: 3}
       propertyPath: m_IsActive

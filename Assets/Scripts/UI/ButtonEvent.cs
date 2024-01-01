@@ -21,7 +21,7 @@ public class ButtonEvent : MonoBehaviour
     public Slider Music_slider;
     public Slider game_sound_slider;
     //public ScriptDontDestroy leveldata;
-
+    
     void Start()
     {
         music_volume_setting();
@@ -127,6 +127,7 @@ public class ButtonEvent : MonoBehaviour
     /// </summary>
     public void On_pause_button()
     {
+        gameAudio.PlayOneShot(buttonClip);
         PauseMenu.SetActive(true);
         Score_check();
         Time.timeScale = 0;
@@ -134,25 +135,31 @@ public class ButtonEvent : MonoBehaviour
     }
     public void On_Resume_button()
     {
+        gameAudio.PlayOneShot(buttonClip);
         PauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
-    public void On_Restart_button(int i)
+    public void On_Restart_button()
     {
+        gameAudio.PlayOneShot(buttonClip);
         Time.timeScale = 1;
-        SceneManager.LoadScene(i);
+        int currentscene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentscene);
     }
     public void On_Menu_button()
     {
+        gameAudio.PlayOneShot(buttonClip);
         Time.timeScale = 1;
         Score_check();
         SceneManager.LoadScene(0);
     }
-    public void On_Next_level(int i)
+    public void On_Next_level()
     {
+        gameAudio.PlayOneShot(buttonClip);
         Time.timeScale = 1;
         Score_check();
-        SceneManager.LoadScene(i);
+        int currentscene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentscene + 1);
     }
     private void Score_check()
     {

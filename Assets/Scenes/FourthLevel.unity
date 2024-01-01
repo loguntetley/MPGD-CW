@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -425,6 +425,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 870754714864648097, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 870754714864648097, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 870754714864648097, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Next_level
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255413727989847654, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255413727989847654, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 1255413727989847654, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Restart_button
+      objectReference: {fileID: 0}
     - target: {fileID: 1488499359602382628, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -509,9 +533,45 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3046709274872919292, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 3046709274872919292, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Menu_button
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153621628958472222, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 4153621628958472222, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Menu_button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934177673125419154, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934177673125419154, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 6934177673125419154, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Restart_button
+      objectReference: {fileID: 0}
     - target: {fileID: 7111696933092327547, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
       propertyPath: m_Name
       value: Gaming UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329734601658072370, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 983977270}
+    - target: {fileID: 8329734601658072370, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: On_Resume_button
       objectReference: {fileID: 0}
     - target: {fileID: 9058150245393087988, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
       propertyPath: m_IsActive
@@ -1005,6 +1065,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
+--- !u!114 &983977270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7389242506069073499, guid: f16998a9e8aef9d4cbe8bdc3b65c6a17, type: 3}
+  m_PrefabInstance: {fileID: 1427325239}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eac21d8a3de2c04a9697420a03c46ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1060741644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1057,6 +1128,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1155965496}
+    - target: {fileID: 4860680789543304427, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
+      propertyPath: freeDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7227688204361391590, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -1066,6 +1141,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
+--- !u!1 &1067617571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4015809170955837505, guid: 7cf3ef5cecdde3448a8ffe3c27562674, type: 3}
+  m_PrefabInstance: {fileID: 390417065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155965496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8301035563419290761, guid: a7b90447a3936ba47b3a4292ddd55e05, type: 3}
@@ -1289,6 +1369,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 296259541673185862, guid: d6f3a8799274b384da84428bfaf5ac5d, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1524271129861841134, guid: d6f3a8799274b384da84428bfaf5ac5d, type: 3}
       propertyPath: m_Name
       value: Checkpoint (1)
@@ -1358,6 +1442,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7389242506069073499, guid: f16998a9e8aef9d4cbe8bdc3b65c6a17, type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 1067617571}
     - target: {fileID: 8570789885252354988, guid: f16998a9e8aef9d4cbe8bdc3b65c6a17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 930.7599
