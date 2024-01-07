@@ -21,7 +21,7 @@ public class ButtonEvent : MonoBehaviour
     public Slider Music_slider;
     public Slider game_sound_slider;
     //public ScriptDontDestroy leveldata;
-    
+
     void Start()
     {
         music_volume_setting();
@@ -29,18 +29,24 @@ public class ButtonEvent : MonoBehaviour
     void music_volume_setting()
     {
         musicAudio = GetComponent<AudioSource>();
-        if(SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            musicAudio.volume = ScriptDontDestroy._scriptDontDestroy.Music_Value;
-            gameAudio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+            if (ScriptDontDestroy._scriptDontDestroy != null)
+            {
+                musicAudio.volume = ScriptDontDestroy._scriptDontDestroy.Music_Value;
+                gameAudio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+            }
         }
         else
         {
-            Music_slider.value = ScriptDontDestroy._scriptDontDestroy.Music_Value;
-            game_sound_slider.value = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+            if (ScriptDontDestroy._scriptDontDestroy != null)
+            {
+                Music_slider.value = ScriptDontDestroy._scriptDontDestroy.Music_Value;
+                game_sound_slider.value = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+            }
         }
     }
-    
+
 
     /*___________________________button_______________________________*/
     public void On_start_button()
@@ -67,7 +73,7 @@ public class ButtonEvent : MonoBehaviour
         {
             SceneManager.LoadScene(j);
         }
-        catch 
+        catch
         {
             Debug.Log("No such level select");
         }
@@ -99,15 +105,15 @@ public class ButtonEvent : MonoBehaviour
         gameAudio.PlayOneShot(buttonClip);
 
         changing_state_UI.gameObject.SetActive(true);
-        if(Input.anyKey)
+        if (Input.anyKey)
         {
-            if(Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape))
             {
                 changing_state_UI.gameObject.SetActive(false);
             }
             else
             {
-                
+
             }
         }
     }
@@ -131,7 +137,7 @@ public class ButtonEvent : MonoBehaviour
         PauseMenu.SetActive(true);
         Score_check();
         Time.timeScale = 0;
-        
+
     }
     public void On_Resume_button()
     {
@@ -174,7 +180,7 @@ public class ButtonEvent : MonoBehaviour
         }
         int i = (int)(capturedFlags / AllCheckpoints.Length * 3);
         int unlock = SceneManager.GetActiveScene().buildIndex;
-        if(i> ScriptDontDestroy._scriptDontDestroy.levels[unlock-1])
+        if (i > ScriptDontDestroy._scriptDontDestroy.levels[unlock - 1])
         {
             ScriptDontDestroy._scriptDontDestroy.levels[unlock - 1] = i;
 

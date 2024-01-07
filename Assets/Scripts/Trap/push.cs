@@ -10,7 +10,10 @@ public class push : MonoBehaviour
     private void Start()
     {
         push_audio = GetComponent<AudioSource>();
-        push_audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        if (ScriptDontDestroy._scriptDontDestroy != null)
+        {
+            push_audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        }
     }
     public Vector3 GetRandomUnitVector()
     {

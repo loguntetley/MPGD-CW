@@ -25,7 +25,10 @@ public class PlayerControllerT : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody>();
         playerData = GetComponent<PlayerData>();
         drop_audio = GetComponent<AudioSource>();
-        drop_audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        if (ScriptDontDestroy._scriptDontDestroy != null)
+        {
+            drop_audio.volume = ScriptDontDestroy._scriptDontDestroy.game_sound_Value;
+        }
     }
     void Update()
     {
