@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformName: Safety Platform
-  platfromImage: {fileID: 2800000, guid: 485c0fe0d59cc1349a903b4305c30385, type: 3}
+  platfromImage: {fileID: 2800000, guid: e797f579492790347aa39578525ff5a7, type: 3}
 --- !u!1 &6893475964850368209
 GameObject:
   m_ObjectHideFlags: 0

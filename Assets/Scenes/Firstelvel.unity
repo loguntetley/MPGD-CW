@@ -4761,7 +4761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4860680789543304427, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
       propertyPath: rotationXMinMax.x
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 7227688204361391590, guid: c1614f6fe61d9a842b58adb3e6550f93, type: 3}
       propertyPath: m_Name

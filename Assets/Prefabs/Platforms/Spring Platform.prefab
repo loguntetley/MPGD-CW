@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformName: 'Spring '
-  platfromImage: {fileID: 2800000, guid: d844456cded6a364aa60f08c1221a841, type: 3}
+  platfromImage: {fileID: 2800000, guid: 6c35849aa167ad04c9191dc0ddd19d27, type: 3}
 --- !u!64 &7849176584881190483
 MeshCollider:
   m_ObjectHideFlags: 0

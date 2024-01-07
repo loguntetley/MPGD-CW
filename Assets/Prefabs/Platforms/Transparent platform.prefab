@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5474545522044307127}
   - component: {fileID: 8363269718687429968}
   - component: {fileID: 2859081835343566907}
+  - component: {fileID: 2362406334032628568}
   m_Layer: 0
   m_Name: Transparent platform
   m_TagString: Selectable
@@ -118,3 +119,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd3d412252114ef0b4a9c15842a3221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2362406334032628568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627295288405147477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f548806fd9e4bb469bda1fa40d32f7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformName: Transparent
+  platfromImage: {fileID: 2800000, guid: 8ce352fdcbacd4a4da18fb791ee16a96, type: 3}

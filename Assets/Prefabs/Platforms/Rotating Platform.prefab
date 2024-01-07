@@ -132,4 +132,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformName: 'Rotating '
-  platfromImage: {fileID: 2800000, guid: ef4e5a266b6b5e044a4be31dfdfd61b9, type: 3}
+  platfromImage: {fileID: 2800000, guid: a859158be930e5a4191904e397aa5a7e, type: 3}
